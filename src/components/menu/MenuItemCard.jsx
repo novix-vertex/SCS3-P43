@@ -51,9 +51,9 @@ const MenuItemCard = ({ menuItem }) => {
 
                 <div className="grid grid-cols-2 gap-2 mt-6">
 
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg py-2 text-sm cursor-pointer"
+                    <button disabled={!menuItem.available} className={`text-white rounded-lg py-2 text-sm cursor-pointer ${menuItem.available ? "bg-orange-500 hover:bg-orange:600" : "bg-gray-400 cursor-not-allowed"}`}
                         onClick={() => { handleAddToCart(menuItem) }}>
-                        Add to Cart
+                        {menuItem.available ? "Add to Cart" : "Out of Stock"}
                     </button>
 
                     <button className="bg-red-500 hover:bg-red-600 text-white rounded-lg py-2 text-sm cursor-pointer">
