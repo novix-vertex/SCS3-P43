@@ -1,4 +1,13 @@
+import { useDispatch } from "react-redux"
+import { addToCart } from "../../features/cart/cartSlice"
+
 const MenuItemCard = ({ menuItem }) => {
+
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (menuItem) => {
+        dispatch(addToCart(menuItem));
+    }
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 cursor-pointer">
             <img src={menuItem.image} alt={menuItem.name} className="w-full h-52 object-cover" />
@@ -42,7 +51,8 @@ const MenuItemCard = ({ menuItem }) => {
 
                 <div className="grid grid-cols-2 gap-2 mt-6">
 
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg py-2 text-sm cursor-pointer">
+                    <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg py-2 text-sm cursor-pointer"
+                        onClick={() => { handleAddToCart(menuItem) }}>
                         Add to Cart
                     </button>
 
