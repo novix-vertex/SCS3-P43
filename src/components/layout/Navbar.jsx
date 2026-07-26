@@ -1,4 +1,13 @@
+import { useDispatch } from "react-redux";
+import { search } from "../../features/filter/filterSlice";
 function Navbar() {
+
+    const dispatch = useDispatch();
+
+    const handleSearch = (e) => {
+        dispatch(search(e.target.value));
+    }
+    
     return (
         <header className="bg-white shadow-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 py-4">
@@ -20,6 +29,7 @@ function Navbar() {
                         type="text"
                         placeholder="Search food item..."
                         className="flex-1 border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
+                        onChange={handleSearch}
                     />
                     <select className="border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400">
                         <option>All Categories</option>
