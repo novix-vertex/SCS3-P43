@@ -1,9 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchByText, filterByCategory } from "../../features/filter/filterSlice";
+
 import { useEffect, useState } from "react";
 function Navbar() {
 
     const [searchText, setSearchText] = useState("");
+
+    const { cartItems } = useSelector((state) => state.cart);
 
     const dispatch = useDispatch();
 
@@ -35,7 +38,7 @@ function Navbar() {
                     </h1>
 
                     <div className="flex items-center gap-4">
-                        <button className="bg-orange-500 py-0.5 px-2 text-white rounded cursor-pointer">Cart</button>
+                        <button className="relative text-2xl">🛒<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">{cartItems.length}</span></button>
                         <button className="bg-orange-500 py-0.5 px-2 text-white rounded cursor-pointer">Theme</button>
                     </div>
                 </div>
