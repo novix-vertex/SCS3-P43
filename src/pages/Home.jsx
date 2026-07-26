@@ -29,8 +29,11 @@ const Home = () => {
 
 
     const filteredMenu = menu.filter((menuItem) => {
-        const searchFilter = menuItem.name.toLowerCase().includes(search.toLowerCase());
-        const categoryFilter = category === "all" || menuItem.category.toLowerCase() === category.toLowerCase();
+        const itemName = menuItem.name.toLowerCase();
+        const itemCategory = menuItem.category.toLowerCase();
+
+        const searchFilter = search === "" || itemName.includes(search.toLowerCase());
+        const categoryFilter = category === "all" || itemCategory === category.toLowerCase();
 
         return searchFilter && categoryFilter;
     });
