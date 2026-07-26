@@ -7,7 +7,7 @@ import MenuItemCard from "../components/menu/MenuItemCard";
 const Home = () => {
     const dispatch = useDispatch();
     const { menu, loading, error } = useSelector((state) => state.menu);
-    const { search } = useSelector(
+    const { search, category } = useSelector(
         state => state.filter
     );
 
@@ -29,7 +29,10 @@ const Home = () => {
 
 
     const filteredMenu = menu.filter((menuItem) => {
-        return menuItem.name.toLowerCase().includes(search.toLowerCase())
+        const searchFilter = menuItem.name.toLowerCase().includes(search.toLowerCase());
+        const categoryFilter = category === "all" || menuItem.category.toLowerCase() === category.toLowerCase();
+
+        return searchFilter && categoryFilter;
     });
 
     return (

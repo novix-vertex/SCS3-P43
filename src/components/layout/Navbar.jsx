@@ -1,18 +1,23 @@
 import { useDispatch } from "react-redux";
-import { search } from "../../features/filter/filterSlice";
+import { searchByText, filterByCategory } from "../../features/filter/filterSlice";
 import { useEffect, useState } from "react";
 function Navbar() {
 
     const [searchText, setSearchText] = useState("");
+
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {
         setSearchText(e.target.value);
     }
 
+    const handleFilter = (e) => {
+        dispatch(filterByCategory(e.target.value));
+    }
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            dispatch(search(searchText));
+            dispatch(searchByText(searchText));
         }, 700);
 
         return (() => {
@@ -43,17 +48,18 @@ function Navbar() {
                         className="flex-1 border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
                         onChange={handleSearch}
                     />
-                    <select className="border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400">
-                        <option>All Categories</option>
-                        <option>Burger</option>
-                        <option>Pizza</option>
-                        <option>Wrap</option>
-                        <option>Momos</option>
-                        <option>Sandwich</option>
-                        <option>Salad</option>
-                        <option>Desert</option>
-                        <option>Beverage</option>
-                        <option>Snacks</option>
+                    <select className="border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
+                        onChange={handleFilter}>
+                        <option value="all">All Categories</option>
+                        <option value="burger">Burger</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="wrap">Wrap</option>
+                        <option value="momos">Momos</option>
+                        <option value="sandwich">Sandwich</option>
+                        <option value="salad">Salad</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="beverage">Beverage</option>
+                        <option value="snacks">Snacks</option>
                     </select>
                     <div className="flex rounded-lg overflow-hidden border">
                         <button className="px-4 py-2 bg-orange-500 text-white">
