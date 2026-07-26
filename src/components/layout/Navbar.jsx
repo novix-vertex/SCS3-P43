@@ -1,13 +1,25 @@
 import { useDispatch } from "react-redux";
 import { search } from "../../features/filter/filterSlice";
+import { useEffect, useState } from "react";
 function Navbar() {
 
+    const [searchText, setSearchText] = useState("");
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {
-        dispatch(search(e.target.value));
+        setSearchText(e.target.value);
     }
-    
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            dispatch(search(searchText));
+        }, 700);
+
+        return (() => {
+            clearTimeout(timer);
+        });
+    }, [searchText, dispatch]);
+
     return (
         <header className="bg-white shadow-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 py-4">

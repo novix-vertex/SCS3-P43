@@ -41,6 +41,7 @@ const Home = () => {
                         <MenuItemCard
                             key={menuItem.id}
                             menuItem={menuItem} />
+
                     )
                 }
                 </div>
