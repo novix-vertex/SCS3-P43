@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../../features/ui/uiSlice";
+import { clearCart } from "../../features/cart/cartSlice";
 import CartItem from "./CartItem";
+import toast from "react-hot-toast";
 
 function CartSidebar() {
   const { isCartOpen } = useSelector((state) => state.ui);
   const { cartItems } = useSelector((state) => state.cart);
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity),0);
+  const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const deliveryFee = subtotal > 0 ? 40 : 0;
   const grandTotal = subtotal + deliveryFee;
 
@@ -19,14 +21,37 @@ function CartSidebar() {
     dispatch(toggleCart());
   }
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+    toast.success("Cart Cleared");
+  }
+
   return (
 
     <div className="fixed top-0 right-0 h-screen w-96 bg-white shadow-xl flex flex-col z-50">
 
-      <div className="flex justify-between items-center p-5 border-b">
-        <h2 className="text-2xl font-bold">Your Cart</h2>
-        <button className="text-xl" onClick={handleToggleCart}>✕</button>
+      <div className="flex justify-between items-center border-b p-5">
+
+        <h2 className="text-2xl font-bold">
+          Your Cart
+        </h2>
+
+        <div className="flex gap-3">
+          <button
+            disabled={cartItems.length === 0}
+            onClick={handleClearCart}
+            className={`text-sm ${cartItems.length === 0
+                ? "text-gray-400 cursor-not-allowed"
+                : "text-red-500 hover:text-red-700"
+              }`}>
+            Clear All
+          </button>
+
+          <button className="text-xl" onClick={handleToggleCart}>✕</button>
+        </div>
+
       </div>
+
       <div className="flex-1 overflow-y-auto p-5">
 
         {cartItems.length === 0 ? (

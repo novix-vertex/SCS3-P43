@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { increaseQuantity, decreaseQuantity, removeFromCart } from "../../features/cart/cartSlice";
+import toast from "react-hot-toast";
 
 function CartItem({ cartItem }) {
     const subtotal = cartItem.price * cartItem.quantity;
@@ -16,6 +17,7 @@ function CartItem({ cartItem }) {
 
     const handleRemoveFromCart = () => {
         dispatch(removeFromCart(cartItem.id));
+        toast.success(`${cartItem.name} is removed from the cart successfully.`);
     }
     return (
 

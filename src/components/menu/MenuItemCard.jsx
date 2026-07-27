@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../features/cart/cartSlice"
+import toast from "react-hot-toast";
 
 const MenuItemCard = ({ menuItem }) => {
 
@@ -7,6 +8,7 @@ const MenuItemCard = ({ menuItem }) => {
 
     const handleAddToCart = (menuItem) => {
         dispatch(addToCart(menuItem));
+        toast.success(`${menuItem.name} is added to the cart successfully.`);
     }
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 cursor-pointer">
