@@ -35,14 +35,14 @@ function CartItem({ cartItem }) {
                     {cartItem.category}
                 </p>
 
-                <p className="mt-2 text-orange-500 font-bold">
+                <p className="mt-2 text-[#6F4E37] font-bold">
                     ${cartItem.price}
                 </p>
                 <div className="flex items-center gap-3 mt-4">
 
                     <button
                         onClick={handleDecreaseQuantity}
-                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-orange-100 cursor-pointer"
+                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-[#5B3A29] hover:text-white cursor-pointer"
                     >
                         <FiMinus size={14} />
                     </button>
@@ -53,7 +53,7 @@ function CartItem({ cartItem }) {
 
                     <button
                         onClick={handleIncreaseQuantity}
-                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-orange-100 cursor-pointer"
+                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-[#5B3A29] hover:text-white cursor-pointer"
                     >
                         <FiPlus size={14} />
                     </button>
@@ -65,7 +65,7 @@ function CartItem({ cartItem }) {
                         Item Total
                     </span>
 
-                    <span className="font-bold text-orange-500">
+                    <span className="font-bold text-[#6F4E37]">
                         ${itemTotal}
                     </span>
 

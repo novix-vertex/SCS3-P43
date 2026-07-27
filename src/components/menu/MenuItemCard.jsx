@@ -51,7 +51,7 @@ const MenuItemCard = ({ menuItem }) => {
                 </p>
 
                 <div className="flex justify-between items-center mt-5">
-                    <h3 className="text-2xl font-bold text-orange-500">
+                    <h3 className="text-2xl font-bold text-[#6F4E37]">
                         ${menuItem.price}
                     </h3>
                 </div>
@@ -67,7 +67,7 @@ const MenuItemCard = ({ menuItem }) => {
                                 "bg-gray-400 cursor-not-allowed text-white" :
                                 (isItemAdded ?
                                     "bg-green-500 text-white cursor-not-allowed" :
-                                    "bg-orange-500 text-white hover:bg-orange-600 active:scale-[0.97] cursor-pointer")
+                                    "bg-[#6F4E37] text-white hover:bg-[#5B3A29] active:scale-[0.97] cursor-pointer")
                             }`}>
                         {!menuItem.available
                             ? "Out of Stock"

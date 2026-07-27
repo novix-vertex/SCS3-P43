@@ -37,7 +37,7 @@ const Home = () => {
 
                 <button
                     onClick={() => dispatch(fetchMenu())}
-                    className="mt-5 bg-orange-500 text-white px-6 py-2 rounded-lg"
+                    className="mt-5 bg-[#6F4E37] text-white px-6 py-2 rounded-lg"
                 >
                     Try Again
                 </button>
@@ -84,7 +84,7 @@ const Home = () => {
     }
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-stone-50 min-h-screen">
             <Navbar />
             <MenuItemList filteredMenu={filteredMenu} />
             <CartSidebar />

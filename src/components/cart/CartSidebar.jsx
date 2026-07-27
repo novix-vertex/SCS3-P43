@@ -90,7 +90,7 @@ function CartSidebar() {
 
             <button
               onClick={handleToggleCart}
-              className="mt-6 bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600"
+              className="mt-6 bg-[#6F4E37] text-white px-6 py-2 rounded-lg hover:bg-[#5B3A29]"
             >
               Browse Menu
             </button>
@@ -120,7 +120,7 @@ function CartSidebar() {
 
             </div>
 
-            <div className="flex justify-between text-orange-400">
+            <div className="flex justify-between text-[#6F4E37]">
 
               <span>Subtotal</span>
 
@@ -136,7 +136,7 @@ function CartSidebar() {
 
             </div>
 
-            <div className="border-t pt-2 flex justify-between font-bold text-lg text-orange-500">
+            <div className="border-t pt-2 flex justify-between font-bold text-lg text-[#6F4E37]">
 
               <span>Total</span>
 
