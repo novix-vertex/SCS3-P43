@@ -90,7 +90,7 @@ function CartSidebar() {
 
             <button
               onClick={handleToggleCart}
-              className="mt-6 bg-[#6F4E37] text-white px-6 py-2 rounded-lg hover:bg-[#5B3A29]"
+              className="mt-6 bg-[#6F4E37] text-white px-6 py-2 rounded-lg hover:bg-[#5B3A29] cursor-pointer"
             >
               Browse Menu
             </button>
