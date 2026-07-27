@@ -19,7 +19,15 @@ const Home = () => {
     }, [dispatch]);
 
     if (loading) {
-        return <h2>Loading...</h2>
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F1EB]">
+                <div className="w-12 h-12 border-4 border-[#6F4E37] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#6F4E37] font-medium">
+                    Loading your cafe...
+                </p>
+            </div>
+        );
     }
     if (error) {
 
@@ -73,7 +81,7 @@ const Home = () => {
                     </h2>
 
                     <p className="text-gray-500 mt-3">
-                        Try another search  
+                        Try another search
                     </p>
 
                 </div>
