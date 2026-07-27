@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "../../features/cart/cartSlice"
 import toast from "react-hot-toast";
 
@@ -6,12 +6,18 @@ const MenuItemCard = ({ menuItem }) => {
 
     const dispatch = useDispatch();
 
-    const handleAddToCart = (menuItem) => {
+    const { cartItems } = useSelector((state) => state.cart);
+    const isItemAdded = cartItems.some((item) => item.id === menuItem.id)
+
+    const handleAddToCart = () => {
+        if (isItemAdded || !menuItem.available) return;
+
         dispatch(addToCart(menuItem));
         toast.success(`${menuItem.name} is added to the cart successfully.`);
     }
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+
             <img src={menuItem.image} alt={menuItem.name} className="w-full h-52 object-cover" />
             <div className="p-5">
 
@@ -53,9 +59,21 @@ const MenuItemCard = ({ menuItem }) => {
 
                 <div className="grid grid-cols-1 mt-6">
 
-                    <button disabled={!menuItem.available} className={`text-white rounded-lg py-2 text-sm cursor-pointer ${menuItem.available ? "bg-orange-500 hover:bg-orange:600 active:scale-[0.97]" : "bg-gray-400 cursor-not-allowed"}`}
-                        onClick={() => { handleAddToCart(menuItem) }}>
-                        {menuItem.available ? "Add to Cart" : "Out of Stock"}
+                    <button
+                        disabled={!menuItem.available || isItemAdded}
+                        onClick={handleAddToCart}
+                        className={`w-full rounded-lg py-2 text-sm transition-all duration-200
+                        ${!menuItem.available ?
+                                "bg-gray-400 cursor-not-allowed text-white" :
+                                (isItemAdded ?
+                                    "bg-green-500 text-white cursor-not-allowed" :
+                                    "bg-orange-500 text-white hover:bg-orange-600 active:scale-[0.97]")
+                            }`}>
+                        {!menuItem.available
+                            ? "Out of Stock"
+                            : isItemAdded
+                                ? "✓ Added"
+                                : "Add to Cart"}
                     </button>
 
                 </div>
