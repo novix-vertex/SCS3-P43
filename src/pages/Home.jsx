@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMenu } from "../features/menu/menuSlice";
 import Navbar from "../components/layout/Navbar";
-import MenuItemCard from "../components/menu/MenuItemCard";
+import CartSidebar from "../components/cart/CartSidebar";
+import MenuItemList from "../components/menu/MenuItemList";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -41,17 +42,8 @@ const Home = () => {
     return (
         <div className="bg-gray-100 min-h-screen">
             <Navbar />
-            <div className="max-w-7xl mx-auto p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                {
-                    filteredMenu.map((menuItem) =>
-                        <MenuItemCard
-                            key={menuItem.id}
-                            menuItem={menuItem} />
-
-                    )
-                }
-                </div>
-            </div>
+            <MenuItemList filteredMenu={filteredMenu} />
+            <CartSidebar />
         </div>
     )
 }

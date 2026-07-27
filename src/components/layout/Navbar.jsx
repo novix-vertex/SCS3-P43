@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { searchByText, filterByCategory } from "../../features/filter/filterSlice";
+import { toggleCart } from "../../features/ui/uiSlice";
 
 import { useEffect, useState } from "react";
 function Navbar() {
@@ -7,6 +8,8 @@ function Navbar() {
     const [searchText, setSearchText] = useState("");
 
     const { cartItems } = useSelector((state) => state.cart);
+
+    const { isCartOpen } = useSelector((state) => state.ui);
 
     const dispatch = useDispatch();
 
@@ -16,6 +19,9 @@ function Navbar() {
 
     const handleFilter = (e) => {
         dispatch(filterByCategory(e.target.value));
+    }
+    const handleToggleCart = () => {
+        dispatch(toggleCart())
     }
 
     useEffect(() => {
@@ -38,7 +44,7 @@ function Navbar() {
                     </h1>
 
                     <div className="flex items-center gap-4">
-                        <button className="relative text-2xl">🛒<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">{cartItems.reduce((total, item) => {
+                        <button className="relative text-2xl" onClick={handleToggleCart}>🛒<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">{cartItems.reduce((total, item) => {
                             total += item.quantity;
                             return total;
                         }, 0)}</span></button>
