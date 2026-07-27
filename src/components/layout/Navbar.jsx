@@ -9,8 +9,6 @@ function Navbar() {
 
     const { cartItems } = useSelector((state) => state.cart);
 
-    const { isCartOpen } = useSelector((state) => state.ui);
-
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {

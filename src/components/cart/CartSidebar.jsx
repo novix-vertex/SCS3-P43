@@ -15,8 +15,6 @@ function CartSidebar() {
 
   const dispatch = useDispatch();
 
-  if (!isCartOpen) return null;
-
   const handleToggleCart = () => {
     dispatch(toggleCart());
   }
@@ -28,7 +26,25 @@ function CartSidebar() {
 
   return (
 
-    <div className="fixed top-0 right-0 h-screen w-96 bg-white shadow-xl flex flex-col z-50">
+    <div className={`
+        fixed
+        top-0
+        right-0
+        z-50
+        h-screen
+        w-96
+        bg-white
+        shadow-xl
+        flex
+        flex-col
+        transition-transform
+        duration-500
+        ease-in-out
+        ${isCartOpen
+        ? "translate-x-0"
+        : "translate-x-full"
+      }
+    `}>
 
       <div className="flex justify-between items-center border-b p-5">
 
@@ -41,8 +57,8 @@ function CartSidebar() {
             disabled={cartItems.length === 0}
             onClick={handleClearCart}
             className={`text-sm ${cartItems.length === 0
-                ? "text-gray-400 cursor-not-allowed"
-                : "text-red-500 hover:text-red-700"
+              ? "text-gray-400 cursor-not-allowed"
+              : "text-red-500 hover:text-red-700"
               }`}>
             Clear All
           </button>
@@ -55,7 +71,28 @@ function CartSidebar() {
       <div className="flex-1 overflow-y-auto p-5">
 
         {cartItems.length === 0 ? (
-          <p className="text-center text-gray-500 mt-10">Your cart is empty</p>
+          <div className="flex flex-col items-center justify-center h-full text-center px-6">
+
+            <div className="text-7xl mb-5">
+              🛒
+            </div>
+
+            <h2 className="text-2xl font-bold">
+              Your Cart is Empty
+            </h2>
+
+            <p className="text-gray-500 mt-3">
+              Add your favorite item to get started.
+            </p>
+
+            <button
+              onClick={handleToggleCart}
+              className="mt-6 bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600"
+            >
+              Browse Menu
+            </button>
+
+          </div>
         ) : (
           cartItems.map((cartItem) => (
             <CartItem
@@ -80,7 +117,7 @@ function CartSidebar() {
 
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between text-orange-400">
 
               <span>Subtotal</span>
 
@@ -96,7 +133,7 @@ function CartSidebar() {
 
             </div>
 
-            <div className="border-t pt-2 flex justify-between font-bold text-lg">
+            <div className="border-t pt-2 flex justify-between font-bold text-lg text-orange-500">
 
               <span>Total</span>
 
@@ -106,7 +143,6 @@ function CartSidebar() {
 
           </div>
         </div>
-        <button className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600">Checkout</button>
       </div>
 
     </div>
