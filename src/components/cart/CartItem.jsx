@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { increaseQuantity, decreaseQuantity, removeFromCart } from "../../features/cart/cartSlice";
 import toast from "react-hot-toast";
-
+import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 function CartItem({ cartItem }) {
-    const subtotal = cartItem.price * cartItem.quantity;
+    const itemTotal = cartItem.price * cartItem.quantity;
 
     const dispatch = useDispatch();
 
@@ -20,38 +20,63 @@ function CartItem({ cartItem }) {
         toast.success(`${cartItem.name} is removed from the cart successfully.`);
     }
     return (
-
-        <div className="flex gap-4 border-b py-4">
+        <div className="flex gap-4 border-b border-gray-200 py-5 transition hover:bg-gray-50">
             <img
                 src={cartItem.image}
                 alt={cartItem.name}
-                className="w-20 h-20 rounded-lg object-cover"
+                className="w-24 h-24 rounded-xl object-cover"
             />
             <div className="flex-1">
-                <h3 className="font-semibold">
+                <h3 className="text-lg font-semibold">
                     {cartItem.name}
                 </h3>
+
                 <p className="text-sm text-gray-500">
                     {cartItem.category}
                 </p>
-                <p className="font-bold text-orange-500 mt-2">
+
+                <p className="mt-2 text-orange-500 font-bold">
                     ${cartItem.price}
                 </p>
-                <div className="flex items-center gap-3 mt-3">
-                    <button onClick={handleDecreaseQuantity}>-</button>
-                    <span>{cartItem.quantity}</span>
-                    <button onClick={handleIncreaseQuantity}>+</button>
+                <div className="flex items-center gap-3 mt-4">
+
+                    <button
+                        onClick={handleDecreaseQuantity}
+                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-orange-100 cursor-pointer"
+                    >
+                        <FiMinus size={14} />
+                    </button>
+
+                    <span className="font-semibold">
+                        {cartItem.quantity}
+                    </span>
+
+                    <button
+                        onClick={handleIncreaseQuantity}
+                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-orange-100 cursor-pointer"
+                    >
+                        <FiPlus size={14} />
+                    </button>
+
                 </div>
-                <div className="w-full space-y-2">
-                    <div className="flex justify-between font-bold text-orange-500">
-                        <span>Price</span>
-                        <span>{subtotal}</span>
-                    </div>
+                <div className="flex justify-between mt-5">
+
+                    <span className="text-gray-500">
+                        Item Total
+                    </span>
+
+                    <span className="font-bold text-orange-500">
+                        ${itemTotal}
+                    </span>
+
                 </div>
 
 
-                <button onClick={handleRemoveFromCart} className="text-white mt-3 bg-red-500 py-0.5 px-3 rounded">
-                    Remove
+                <button
+                    onClick={handleRemoveFromCart}
+                    className="text-red-500 hover:text-red-700 flex items-center gap-2 cursor-pointer"
+                >
+                    <FiTrash2 /> Remove
                 </button>
 
             </div>

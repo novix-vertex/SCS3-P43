@@ -71,14 +71,7 @@ function Navbar() {
                         <option value="beverage">Beverage</option>
                         <option value="snacks">Snacks</option>
                     </select>
-                    <div className="flex rounded-lg overflow-hidden border">
-                        <button className="px-4 py-2 bg-orange-500 text-white">
-                            Customer
-                        </button>
-                        <button className="px-4 py-2 bg-gray-100">
-                            Admin
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </header>

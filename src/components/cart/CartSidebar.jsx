@@ -3,6 +3,7 @@ import { toggleCart } from "../../features/ui/uiSlice";
 import { clearCart } from "../../features/cart/cartSlice";
 import CartItem from "./CartItem";
 import toast from "react-hot-toast";
+import { MdClear } from "react-icons/md";
 
 function CartSidebar() {
   const { isCartOpen } = useSelector((state) => state.ui);
@@ -56,14 +57,16 @@ function CartSidebar() {
           <button
             disabled={cartItems.length === 0}
             onClick={handleClearCart}
-            className={`text-sm ${cartItems.length === 0
+            className={`cursor-pointer text-sm ${cartItems.length === 0
               ? "text-gray-400 cursor-not-allowed"
               : "text-red-500 hover:text-red-700"
               }`}>
             Clear All
           </button>
 
-          <button className="text-xl" onClick={handleToggleCart}>✕</button>
+          <button className="text-xl cursor-pointer" onClick={handleToggleCart}>
+            <MdClear size={24} />
+          </button>
         </div>
 
       </div>

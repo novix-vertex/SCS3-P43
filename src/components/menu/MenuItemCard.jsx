@@ -11,7 +11,7 @@ const MenuItemCard = ({ menuItem }) => {
         toast.success(`${menuItem.name} is added to the cart successfully.`);
     }
     return (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 cursor-pointer">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
             <img src={menuItem.image} alt={menuItem.name} className="w-full h-52 object-cover" />
             <div className="p-5">
 
@@ -46,7 +46,7 @@ const MenuItemCard = ({ menuItem }) => {
 
                 <div className="flex justify-between items-center mt-5">
                     <h3 className="text-2xl font-bold text-orange-500">
-                        ₹{menuItem.price}
+                        ${menuItem.price}
                     </h3>
                 </div>
 
