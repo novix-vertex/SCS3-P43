@@ -67,7 +67,7 @@ const MenuItemCard = ({ menuItem }) => {
                                 "bg-gray-400 cursor-not-allowed text-white" :
                                 (isItemAdded ?
                                     "bg-green-500 text-white cursor-not-allowed" :
-                                    "bg-orange-500 text-white hover:bg-orange-600 active:scale-[0.97]")
+                                    "bg-orange-500 text-white hover:bg-orange-600 active:scale-[0.97] cursor-pointer")
                             }`}>
                         {!menuItem.available
                             ? "Out of Stock"

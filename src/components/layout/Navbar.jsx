@@ -46,7 +46,6 @@ function Navbar() {
                             total += item.quantity;
                             return total;
                         }, 0)}</span></button>
-                        <button className="bg-orange-500 py-0.5 px-2 text-white rounded cursor-pointer">Theme</button>
                     </div>
                 </div>
 
