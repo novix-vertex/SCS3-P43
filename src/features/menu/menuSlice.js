@@ -31,7 +31,6 @@ export const menuSlice = createSlice({
 export const fetchMenu = createAsyncThunk(
     "menu/fetchMenu",
     async () => {
-        console.log("thunk called");
         const res = await api.get("/menu");
         return res.data;
     }

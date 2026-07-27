@@ -15,16 +15,13 @@ const Home = () => {
 
     //calling fetchMenu api and this useeffect will only run when dispatch is being hit so added in dependency
     useEffect(() => {
-        console.log("api called using dispatch...");
         dispatch(fetchMenu());
     }, [dispatch]);
 
     if (loading) {
-        console.log("loading...");
         return <h2>Loading...</h2>
     }
     if (error) {
-        console.log("loading stopped - error occured...");
         return <h2>{error}</h2>
     }
 
