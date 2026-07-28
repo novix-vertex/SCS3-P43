@@ -16,20 +16,20 @@ const MenuItemCard = ({ menuItem }) => {
         toast.success(`${menuItem.name} is added to the cart successfully.`);
     }
     return (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300">
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-2xl hover:-translate-y-2 hover:border-white/40">
 
-            <img src={menuItem.image} alt={menuItem.name} className="w-full h-52 object-cover" />
+            <img src={menuItem.image} alt={menuItem.name} className="w-full h-80 object-cover rounded-t-3xl" />
             <div className="p-5">
 
                 <div className="flex justify-between items-start">
 
                     <div>
 
-                        <h2 className="text-xl font-bold">
+                        <h2 className="text-xl font-bold text-amber-300">
                             {menuItem.name}
                         </h2>
 
-                        <p className="text-sm text-gray-500 mt-1">
+                        <p className="text-sm text-white/80 mt-1">
                             {menuItem.category}
                         </p>
 
@@ -38,20 +38,20 @@ const MenuItemCard = ({ menuItem }) => {
                     <span
                         className={`text-xs px-3 py-1 rounded-full 
                             ${menuItem.available
-                                ? "bg-green-100 text-green-700"
-                                : "bg-red-100 text-red-700"
+                                ? "bg-white/20 backdrop-blur-md border border-white/20 text-white"
+                                : "bg-red-900/70 backdrop-blur-md border border-white/20 text-white"
                             }`}>
                         {menuItem.available ? "Available" : "Out of Stock"}
                     </span>
 
                 </div>
 
-                <p className="text-gray-600 mt-4 text-sm">
+                <p className="text-amber-300/80 mt-4 text-sm">
                     {menuItem.description}
                 </p>
 
                 <div className="flex justify-between items-center mt-5">
-                    <h3 className="text-2xl font-bold text-[#6F4E37]">
+                    <h3 className="text-2xl font-bold text-amber-300">
                         ${menuItem.price}
                     </h3>
                 </div>
@@ -64,10 +64,10 @@ const MenuItemCard = ({ menuItem }) => {
                         onClick={handleAddToCart}
                         className={`w-full rounded-lg py-2 text-sm transition-all duration-200
                         ${!menuItem.available ?
-                                "bg-gray-400 cursor-not-allowed text-white" :
+                                "bg-red-900/70 backdrop-blur-md border border-white/20 text-white cursor-not-allowed" :
                                 (isItemAdded ?
-                                    "bg-green-500 text-white cursor-not-allowed" :
-                                    "bg-[#6F4E37] text-white hover:bg-[#5B3A29] active:scale-[0.97] cursor-pointer")
+                                    "bg-green-900/70 backdrop-blur-md border border-white/20 text-white cursor-not-allowed" :
+                                    "bg-amber-300/20 backdrop-blur-md border border-white/20 text-white hover:bg-white/30 active:scale-[0.97] cursor-pointer")
                             }`}>
                         {!menuItem.available
                             ? "Out of Stock"
