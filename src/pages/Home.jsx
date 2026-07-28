@@ -42,7 +42,7 @@ const Home = () => {
                 >
                     <button
                         onClick={() => dispatch(fetchMenu())}
-                        className="mt-6 px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white transition"
+                        className="mt-6 px-6 py-3 rounded-xl bg-amber-300 hover:bg-amber-700 text-black/80 font-bold transition"
                     >
                         Try Again
                     </button>
