@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 const CommonLayout = ({ children }) => {
     return (
-        <div className="bg-[url('https://i.pinimg.com/736x/a0/7e/87/a07e87a7c12bdc9c234a2eb0cd2f8657.jpg')] bg-cover bg-center min-h-screen">
+        <div className="bg-[url('https://i.pinimg.com/736x/d1/75/9d/d1759d09c421c4faf1b743a64fdbd977.jpg')] bg-cover bg-center min-h-screen">
             <Navbar />
 
             {children}
