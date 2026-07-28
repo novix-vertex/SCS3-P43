@@ -27,7 +27,7 @@ function CartSidebar() {
 
   return (
 
-    <div className={`fixed top-0 right-0 z-50 h-screen w-96 bg-white/15 backdrop-blur-2xl border-l border-white/20 shadow-2xl flex flex-col transition-transform duration-500 ease-in-out
+    <div className={`fixed top-0 right-0 z-50 h-screen w-96 bg-white/15 backdrop-blur-2xl border-l border-white/20 shadow-2xl flex flex-col transition-all duration-500 ease-linear
         ${isCartOpen
         ? "translate-x-0"
         : "translate-x-full"
