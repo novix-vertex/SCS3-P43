@@ -16,7 +16,7 @@ const MenuItemCard = ({ menuItem }) => {
         toast.success(`${menuItem.name} is added to the cart successfully.`);
     }
     return (
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-2xl hover:-translate-y-2 hover:border-white/40">
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-2xl hover:-translate-y-2 hover:border-white/40 transition-all duration-200 ease-linear">
 
             <img src={menuItem.image} alt={menuItem.name} className="w-full h-80 object-cover rounded-t-3xl" />
             <div className="p-5">
@@ -62,7 +62,7 @@ const MenuItemCard = ({ menuItem }) => {
                     <button
                         disabled={!menuItem.available || isItemAdded}
                         onClick={handleAddToCart}
-                        className={`w-full rounded-lg py-2 text-sm transition-all duration-200
+                        className={`w-full rounded-lg py-2 text-sm transition-all duration-200 ease-linear
                         ${!menuItem.available ?
                                 "bg-red-900/70 backdrop-blur-md border border-white/20 text-white cursor-not-allowed" :
                                 (isItemAdded ?
