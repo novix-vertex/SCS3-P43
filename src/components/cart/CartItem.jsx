@@ -20,40 +20,40 @@ function CartItem({ cartItem }) {
         toast.success(`${cartItem.name} is removed from the cart successfully.`);
     }
     return (
-        <div className="flex gap-4 border-b border-gray-200 py-5 transition hover:bg-gray-50">
+        <div className="flex gap-4 p-4 mb-4 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg transition-all duration-300 hover:bg-white/20 hover:scale-[1.02]">
             <img
                 src={cartItem.image}
                 alt={cartItem.name}
-                className="w-24 h-24 rounded-xl object-cover"
+                className="w-24 h-24 rounded-2xl object-cover border border-white/20 shadow-md"
             />
             <div className="flex-1">
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-lg font-bold text-white">
                     {cartItem.name}
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-white/60">
                     {cartItem.category}
                 </p>
 
-                <p className="mt-2 text-[#6F4E37] font-bold">
+                <p className="mt-2 text-lg font-bold text-amber-300">
                     ${cartItem.price}
                 </p>
                 <div className="flex items-center gap-3 mt-4">
 
                     <button
                         onClick={handleDecreaseQuantity}
-                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-[#5B3A29] hover:text-white cursor-pointer"
+                        className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/30 transition cursor-pointer"
                     >
                         <FiMinus size={14} />
                     </button>
 
-                    <span className="font-semibold">
+                    <span className="font-bold text-white text-lg">
                         {cartItem.quantity}
                     </span>
 
                     <button
                         onClick={handleIncreaseQuantity}
-                        className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-[#5B3A29] hover:text-white cursor-pointer"
+                        className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/30 transition cursor-pointer"
                     >
                         <FiPlus size={14} />
                     </button>
@@ -61,11 +61,11 @@ function CartItem({ cartItem }) {
                 </div>
                 <div className="flex justify-between mt-5">
 
-                    <span className="text-gray-500">
+                    <span className="text-white/70">
                         Item Total
                     </span>
 
-                    <span className="font-bold text-[#6F4E37]">
+                    <span className="font-bold text-amber-300">
                         ${itemTotal}
                     </span>
 
@@ -74,7 +74,7 @@ function CartItem({ cartItem }) {
 
                 <button
                     onClick={handleRemoveFromCart}
-                    className="text-red-500 hover:text-red-700 flex items-center gap-2 cursor-pointer"
+                    className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500/70 border border-red-400/20 text-red-200 hover:bg-red-500/30 transition cursor-pointer"
                 >
                     <FiTrash2 /> Remove
                 </button>

@@ -27,29 +27,16 @@ function CartSidebar() {
 
   return (
 
-    <div className={`
-        fixed
-        top-0
-        right-0
-        z-50
-        h-screen
-        w-96
-        bg-white
-        shadow-xl
-        flex
-        flex-col
-        transition-transform
-        duration-500
-        ease-in-out
+    <div className={`fixed top-0 right-0 z-50 h-screen w-96 bg-white/15 backdrop-blur-2xl border-l border-white/20 shadow-2xl flex flex-col transition-transform duration-500 ease-in-out
         ${isCartOpen
         ? "translate-x-0"
         : "translate-x-full"
       }
     `}>
 
-      <div className="flex justify-between items-center border-b p-5">
+      <div className="flex justify-between items-center border-b border-white/20 p-5">
 
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-white">
           Your Cart
         </h2>
 
@@ -57,14 +44,14 @@ function CartSidebar() {
           <button
             disabled={cartItems.length === 0}
             onClick={handleClearCart}
-            className={`cursor-pointer text-sm ${cartItems.length === 0
-              ? "text-gray-400 cursor-not-allowed"
-              : "text-red-500 hover:text-red-700"
+            className={`px-3 py-1 rounded-lg transition cursor-pointer text-sm ${cartItems.length === 0
+              ? "bg-white/10 text-white/40 cursor-not-allowed"
+              : "bg-red-500/70 text-red-200 hover:bg-red-500/30"
               }`}>
             Clear All
           </button>
 
-          <button className="text-xl cursor-pointer" onClick={handleToggleCart}>
+          <button className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/30 transition cursor-pointer" onClick={handleToggleCart}>
             <MdClear size={24} />
           </button>
         </div>
@@ -80,20 +67,13 @@ function CartSidebar() {
               🛒
             </div>
 
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold text-white">
               Your Cart is Empty
             </h2>
 
-            <p className="text-gray-500 mt-3">
+            <p className="text-white/70 mt-3">
               Add your favorite item to get started.
             </p>
-
-            <button
-              onClick={handleToggleCart}
-              className="mt-6 bg-[#6F4E37] text-white px-6 py-2 rounded-lg hover:bg-[#5B3A29] cursor-pointer"
-            >
-              Browse Menu
-            </button>
 
           </div>
         ) : (
@@ -108,46 +88,47 @@ function CartSidebar() {
 
       </div>
 
-      <div className="border-t p-5">
-        <div className="flex justify-between mb-4">
-          <div className="w-full space-y-2">
+      {cartItems.length > 0 && (
+        <div className="border-t border-white/20 p-5">
+          <div className="flex justify-between mb-4">
+            <div className="w-full space-y-2">
 
-            <div className="flex justify-between">
+              <div className="flex justify-between text-white/80">
 
-              <span>Items</span>
+                <span>Items</span>
 
-              <span>{totalItems}</span>
+                <span>{totalItems}</span>
+
+              </div>
+
+              <div className="flex justify-between text-amber-300">
+
+                <span>Subtotal</span>
+
+                <span>${subtotal}</span>
+
+              </div>
+
+              <div className="flex justify-between text-white/80">
+
+                <span>Delivery</span>
+
+                <span>${deliveryFee}</span>
+
+              </div>
+
+              <div className="border-t border-white/20 pt-2 flex justify-between font-bold text-lg text-amber-300">
+
+                <span>Total</span>
+
+                <span>${grandTotal}</span>
+
+              </div>
 
             </div>
-
-            <div className="flex justify-between text-[#6F4E37]">
-
-              <span>Subtotal</span>
-
-              <span>${subtotal}</span>
-
-            </div>
-
-            <div className="flex justify-between">
-
-              <span>Delivery</span>
-
-              <span>${deliveryFee}</span>
-
-            </div>
-
-            <div className="border-t pt-2 flex justify-between font-bold text-lg text-[#6F4E37]">
-
-              <span>Total</span>
-
-              <span>${grandTotal}</span>
-
-            </div>
-
           </div>
         </div>
-      </div>
-
+      )};
     </div>
   );
 }

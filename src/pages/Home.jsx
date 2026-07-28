@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMenu } from "../features/menu/menuSlice";
-import Navbar from "../components/layout/Navbar";
-import CartSidebar from "../components/cart/CartSidebar";
 import MenuItemList from "../components/menu/MenuItemList";
 import StateCard from "../components/layout/StateCard";
 import CommonLayout from "../components/layout/CommonLayout";
